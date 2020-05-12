@@ -1,35 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  RegisterPageState createState() => RegisterPageState();
+  LoginPageState createState() => LoginPageState();
 }
 
-class RegisterPageState extends State<RegisterPage> {
+class LoginPageState extends State<LoginPage> {
   final _formKey=GlobalKey<FormState>();
-  String _username,_email,_password;
+  String _email,_password;
   bool _obscureText = true;
    Widget _showTitle(){
-      return Text('Register', style: Theme.of(context).textTheme.headline1);
-   }
-   Widget _showUsernameInput(){
-     return Padding(
-                    padding: EdgeInsets.only(top: 20.0),
-                    child: TextFormField(
-                      onSaved: (val)=> _username=val,
-                      validator: (val)=>val.length<6?'Username too short': null,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Username',
-                        hintText: 'Enter Username, min length 6',
-                        icon: Icon(
-                          Icons.face,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ),
-                  );
+      return Text('Login', style: Theme.of(context).textTheme.headline1);
    }
    Widget _showEmailInput(){
      return Padding(
@@ -39,7 +21,6 @@ class RegisterPageState extends State<RegisterPage> {
                       onSaved: (val)=> _email=val,
                       validator: (val)=>!val.contains('@')? 'Invalid Email': null,
                       decoration: InputDecoration(
-                         
                         border: OutlineInputBorder(),
                         labelText: 'Email',
                         hintText: 'Enter a valid email',
@@ -101,11 +82,11 @@ class RegisterPageState extends State<RegisterPage> {
                               Radius.circular(10),
                             ),
                           ),
-                          color: Theme.of(context).primaryColor,
+                          color: Theme.of(context).accentColor,
                         ),
                         FlatButton(
-                          onPressed: () =>Navigator.pushReplacementNamed(context, '/login'),
-                          child: Text("Existing User? login"),
+                          onPressed: () => Navigator.pushReplacementNamed(context, '/register'),
+                          child: Text("New User? Register"),
                         ),
                       ],
                     ),
@@ -115,14 +96,14 @@ class RegisterPageState extends State<RegisterPage> {
      final form=_formKey.currentState;
      if(form.validate()){
        form.save();
-       print('Username: $_username, Email: $_email, Password: $_password');
+       print('Email: $_email, Password: $_password');
      }
    }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Register"),
+        title: Text("Login"),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -133,7 +114,6 @@ class RegisterPageState extends State<RegisterPage> {
               child: Column(
                 children: [
                   _showTitle(),
-                  _showUsernameInput(),
                   _showEmailInput(),
                   _showPasswordInput(),
                   _showFormAction(),
