@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           headline6: TextStyle(fontSize: 36.0,fontStyle: FontStyle.italic),
           bodyText1: TextStyle(fontSize: 18.0),
         ),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+       // visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
      home: RegisterPage(),
     );
