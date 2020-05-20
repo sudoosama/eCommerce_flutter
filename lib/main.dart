@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         '/register': (BuildContext context)=> RegisterPage(),
       },
       theme: ThemeData(
-        brightness: Brightness.dark,
+       //brightness: Brightness.dark,
         primaryColor: Colors.cyan[400],
         accentColor: Colors.deepOrange[200],
         textTheme: TextTheme(
